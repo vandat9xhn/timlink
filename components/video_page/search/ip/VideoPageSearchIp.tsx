@@ -22,7 +22,7 @@ function VideoPageSearchIp({
 
     //
     function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-        if (e.key === 'Enter' && value) {
+        if (e.key === 'Enter') {
             handleSearch();
         }
     }

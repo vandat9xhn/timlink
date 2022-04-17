@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 //
-import VideoPage from '../components/video_page/_main/VideoPage';
+import VideoPage from '../../components/video_page/_main/VideoPage';
 
 //
 const Video: NextPage = () => {

@@ -2,9 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 //
-const VideoTopic: NextPage = (props) => {
+const VideoItem: NextPage = (props) => {
     //
     const use_router = useRouter();
 
@@ -15,7 +16,7 @@ const VideoTopic: NextPage = (props) => {
     useEffect(() => {
         console.log(props);
 
-        let new_title = use_router.query['topic'] as string;
+        let new_title = use_router.query['id'] as string;
 
         if (!new_title) {
             new_title = location.pathname.split('/').slice(-1)[0];
@@ -41,33 +42,35 @@ const VideoTopic: NextPage = (props) => {
 
 //
 export async function getStaticPaths() {
+    const { data } = await axios.get<[{ id: string }]>(
+        'http://localhost:8000/api/video'
+    );
+
     //
     return {
-        paths: [
-            {
-                params: {
-                    topic: 'funny',
-                },
+        paths: data.map((item) => ({
+            params: {
+                id: item.id,
             },
-        ],
+        })),
         fallback: false, // false or 'blocking'
     };
 }
 
 //
 export async function getStaticProps(context: any) {
+    const id = context['params']['id'];
+    //
+    const { data } = await axios.get<[{ id: string }]>(
+        `http://localhost:8000/api/video/${id}`
+    );
+
     //
     return {
         props: {
-            video: [
-                {
-                    name: 'hai huoc',
-                    des: 'xuan bac tu long',
-                    params: context['params'],
-                },
-            ],
+            video: data,
         },
     };
 }
 
-export default VideoTopic;
+export default VideoItem;

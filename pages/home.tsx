@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
 
 //
@@ -19,11 +18,7 @@ const Home: NextPage = () => {
 
             <main className={styles.main}>
                 <div>
-                    <Link href={'/about'}>Goto About</Link>
-                </div>
-
-                <div>
-                    <Link href={'/video'}>Tim kiem Video</Link>
+                    This is Home Page
                 </div>
             </main>
 

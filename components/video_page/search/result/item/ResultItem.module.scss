@@ -1,0 +1,10 @@
+.ResultItem {
+    margin-bottom: 10px;
+}
+
+.ResultItem_link {
+    &:hover {
+        color: blue;
+        text-decoration: 1px currentColor underline;
+    }
+}

@@ -6,8 +6,6 @@ import VideoPage from '../components/video_page/_main/VideoPage';
 
 //
 const Video: NextPage = () => {
-    VideoPage;
-
     //
     return (
         <>

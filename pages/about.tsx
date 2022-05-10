@@ -14,6 +14,8 @@ const AboutPage: ComponentWithLayout = () => {
 
     //
     useEffect(() => {
+        console.log('mounted');
+
         router.events.on('routeChangeStart', handleRouteChangeStart);
 
         return () => {
@@ -28,11 +30,15 @@ const AboutPage: ComponentWithLayout = () => {
         url: string,
         { shallow }: { shallow: boolean }
     ) {
+        console.log(url);
+
         // router.events.off('routeChangeStart', handleRouteChangeStart);
 
-        // if (!confirm('ok')) {
-        //     router.replace('/about', router.asPath, { shallow: true });
-        // }
+        if (url !== '/about') {
+            if (!confirm('ok')) {
+                router.push('/about');
+            }
+        }
 
         // router.events.on('routeChangeStart', handleRouteChangeStart);
     }
